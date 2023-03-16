@@ -1,5 +1,7 @@
 import 'package:day_1/blocs/internet_bloc.dart';
 import 'package:day_1/blocs/internet_state.dart';
+import 'package:day_1/cubit/internet_cubit.dart';
+import 'package:day_1/cubit/internet_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,11 +11,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(child: BlocBuilder<InternetBloc, InternetState>(
+        body: Center(child: BlocBuilder<InternetCubit, InternetStateC>(
       builder: (context, state) {
-        if (state is InternetConnectedState) {
+        if (state == InternetStateC.Connected) {
           return Text("Wifi Connected");
-        } else if (state is InternetLostState) {
+        } else if (state == InternetStateC.Disconnected) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
